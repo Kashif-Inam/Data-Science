@@ -47,3 +47,16 @@ training_set = train_datagen.flow_from_directory('dataset/training_set', target_
 test_size = test_datagen.flow_from_directory('dataset/test_set', target_size= (64, 64), batch_size= 32, class_mode= 'binary')
 
 classifier.fit_generator(training_set, steps_per_epoch= 8000, epochs= 25, validation_data= test_size, validation_steps=2000)
+
+
+''' Predicting of an Image'''
+d = test_data[0]
+img_data, img_num = d
+
+data = img_data.reshape(IMG_SIZE, IMG_SIZE, 1)
+prediction = model.predict([data])[0]
+
+fig = plt.figure(figsize=(6, 6))
+ax = fig.add_subplot(111)
+ax.imshow(img_data, cmap="gray")
+print(f"cat: {prediction[0]}, dog: {prediction[1]}")
