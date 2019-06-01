@@ -1,0 +1,1 @@
+The dataset was downloaded from Kaggle of skin cancer detection of benign and malignant competition.
